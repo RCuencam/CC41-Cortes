@@ -9,8 +9,7 @@
 
 ### INTRODUCCIÓN
 
-(En el curso de especialidad de la carrera de Ciencias de Computación, Algoritmos y Estructura de datos se les ha encargado a los alumnos un trabajo que tiene como competencia general, desarrollar un pensamiento innovador capaz de diseñar sistemas, componentes o procesos para encontrar soluciones en la atención a las necesidades de la gente.
-En este caso trabajar con proyectos de DataScience para poder manejar grandes cantidades de datos de manera eficiente, mediante la búsqueda, organizacón y filtrado de datos.)
+Nuestro proyecto se basa en encontrar la solución a un problema sobre optimización de espacios. Para este proyecto estaremos implementando los algoritmos de: Fuerza Bruta, Backtracking y Divide y Vencerás. Lo que se espera de este proyecto es comparar los algoritmos implementados y analizar la eficencia de cada uno de ellos en la problemática presentada.
 
 ### PROBLEMA
 
