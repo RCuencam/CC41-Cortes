@@ -36,21 +36,15 @@ En el proceso de desarrollo de software, una de las partes más importantes es q
 
 #### FUERZA BRUTA
 
-En informática, la búsqueda por fuerza bruta es una técnica trivial pero muy usada, que consiste en enumerar sistemáticamente todos los posibles candidatos para la solución de un problema, con el fin de chequear si dicho candidato satisface la solución al mismo.
-
-Por ejemplo, un algoritmo de fuerza bruta para encontrar el divisor de un número natural n consistiría en enumerar todos los enteros desde 1 hasta n, chequeando si cada uno de ellos divide n sin generar resto. Otro ejemplo de búsqueda por fuerza bruta, en este caso para solucionar el problema de las ocho reinas (posicionar ocho reinas en el tablero de ajedrez de forma que ninguna de ellas ataque al resto), consistiría en examinar todas las combinaciones de posición para las 8 reinas (en total 64! /56! = 178.462.987.637.760 posiciones diferentes), comprobando en cada una de ellas si las reinas se atacan mutuamente.
-
-La búsqueda por fuerza bruta es sencilla de implementar y, siempre que exista, encuentra una solución. Sin embargo, su coste de ejecución es proporcional al número de soluciones candidatas, el cual es exponencialmente proporcional al tamaño del problema. Por el contrario, la búsqueda por fuerza bruta se usa habitualmente cuando el número de soluciones candidatas no es elevado, o bien cuando éste puede reducirse previamente usando algún otro método heurístico.
-
-Es un método utilizado también cuando es más importante una implementación sencilla que una mayor rapidez. Este puede ser el caso en aplicaciones críticas donde cualquier error en el algoritmo puede acarrear serias consecuencias; también es útil como método "base" cuando se desea comparar el desempeño de otros algoritmos metaheurísticos. La búsqueda de fuerza bruta puede ser vista como el método metaheurístico más simple.
-
-La búsqueda por fuerza bruta no se debe confundir con backtracking, método que descarta un gran número de conjuntos de soluciones, sin enumerar explícitamente cada una de las mismas.
-
+En informática, la búsqueda por fuerza bruta es una técnica trivial pero muy usada, que consiste en probar sistemáticamente todas las posibles soluciones de un problema, hasta encontrarla. La búsqueda por fuerza bruta es usualmente sencilla de implementar y, siempre que exista, encuentra una solución. Sin embargo, su coste de ejecución es proporcional al número de soluciones candidatas, el cual es exponencialmente proporcional al tamaño del problema. 
+Por otro lado, la búsqueda por fuerza bruta se utiliza cuando el número de soluciones candidatos es mínimo o cuando previamente se puede resolver por algún otro método heurístico.
 
 #### BACKTRACKING
 
-
+El Backtracking es un algoritmo general para encontrar todas (o algunas) soluciones a algunos problemas computacionales, en particular problemas con ciertas restricciones, que aumenta gradualmente a los candidatos a las soluciones y abandona a un candidato ("backtracks") tan pronto como determina que el candidato no puede llegar a ser una solución válida. 
+El ejemplo clásico de libros es el problema de las ocho reinas, en el cual nos piden colocar 8 reinas en el tablero sin que las reinas puedan atacar a la otra en todas las direcciones en las que se mueve. En el enfoque común de retroceso, los candidatos parciales son arreglos de k reinas en las primeras k filas del tablero, todas en diferentes filas y columnas. Si existen soluciones parciales las cuales contengan dos reinas que se ataquen mutuamente, esa opción debe ser eliminada.
+El retroceso se usa con problemas que admitan el concepto de "solución candidata parcial" y si es posible realizar una prueba relativamente rápida de si posiblemente se puede completar con una solución válida. Sin embargo es inútil utilizarla, para localizar un valor dado en una tabla desordenada. Sin embargo, alrealizar este tipo de algoritmo, llega a ser mucho más rápido que la fuerza bruta, ya que se pueden eliminar muchos candidatos con una sola prueba.
 
 #### DIVIDE Y VENCERÁS
 
-
+El algoritmo divide y vencerás se basa prácticamente en resolver algún problema dificil, dividiéndolo en varias partes simples y hasta triviales, las cuales se juntarán luego para resolver el problema mayor. En las ciencias de la computación, el término divide y vencerás (DYV) hace referencia a uno de los más importantes paradigmas de diseño algorítmico. El método está basado en la resolución recursiva de un problema dividiéndolo en dos o más subproblemas de igual tipo o similar. El proceso continúa hasta que éstos llegan a ser lo suficientemente sencillos como para que se resuelvan directamente. Al final, las soluciones a cada uno de los subproblemas se combinan para dar una solución al problema original. Esta técnica es la base de los algoritmos eficientes para casi cualquier tipo de problema como, por ejemplo, algoritmos de ordenamiento (quicksort, mergesort, entre muchos otros), multiplicar números grandes (Karatsuba), análisis sintácticos (análisis sintáctico top-down) y la transformada discreta de Fourier. Por otra parte, analizar y diseñar algoritmos de DyV son tareas que lleva tiempo dominar. Hay ciertos casos en los cuales es necesario sustituir el problema original por uno más complejo para conseguir realizar la recursión, y no hay un método sistemático de generalización.
