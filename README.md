@@ -32,7 +32,7 @@ En el proceso de desarrollo de software, una de las partes más importantes es q
 - Tablas de comparación: tiempo de ejecución de algoritmo vs entrada de datos, memoria consumida por algoritmo vs entrada de datos 
 6. **Presentar**  conclusiones finales en función de los datos levantados en el punto anterior.
 
-### MARCO CONCEPTUAL
+### MARCO TEÓRICO
 
 #### FUERZA BRUTA
 
