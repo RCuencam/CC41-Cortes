@@ -3,7 +3,7 @@
 ### Seción CC41 - Tema: Problema de corte y empaquetamiento 2D
 ### Integrantes:
 
-* Claudia
+* Claudia Miranda
 * Rodrigo
 * Joaquín Aguirre
 
@@ -13,8 +13,11 @@ Nuestro proyecto se basa en encontrar la solución a un problema sobre optimizac
 
 ### PROBLEMA
 
-(Cando se quiere trabajar con grandes cantidades de datos, se necesita acceder a determinada información de forma rápida eficiente, veloz y consumiendo la menor cantidad de recursos posibles. Esto representa un problema considerable en la mayoría de proyectos de software destinados a un gran público o empresas con un gran número de clientes.  
-En el proceso de desarrollo de software, una de las partes más importantes es que sea escalable conservando la usabilidad y los tiempos de carga. Para que nuestro programa cumpla con los requisitos establecidos se deberá crear una estructura capaz de soportar un millón de datos y ser capaz de ubicar, indexar y mostrar los datos en tiempo logarítmico.) 
+En este proyecto se capto como problema principal el desperdicio de recursos. Este puede ser minimizado con un empaquetamiento adecuado; y, en este caso tambien hay un abuso excesivo de cortes. 
+Para ambos problemas mencionados, existen algoritmos que representan soluciones exactas y otros que representan
+soluciones que hacen uso de heurísticas. Finalmente, una empresa debe decidir que problema prefiere atacar, o si desea
+atacar ambos, y que tipo de solución es mas conveniente usar; para lo cual, debe analizar y discutir las ventajas y
+desventajas que conlleva cada algoritmo.
 
 
 ### OBJETIVOS
