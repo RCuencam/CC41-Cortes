@@ -1,19 +1,29 @@
 
-var la, an;
+var la,an;
 var canvas, body; 
 var ctx;
 var padre =[{x:800, y: 400}];
 //
 var rectangulos = [  {x:100,y:50},{x:80,y:40},{x:200,y:50},
 {x:150,y:50},{x:100,y:20},{x:50,y:30},{x:60,y:10},{x:70,y:20}];
+var areas=[];
+var objArea={};
 var rectOrden=[];
 var newPoints=[];
 var obj ={}
 function send()
 {
-    //order size
-    rectOrden = rectangulos.sort(function (a, b){
-        return (b.x  - a.x)
+    //get aareas
+    for( i =0; i<rectangulos.length;i++)
+    {
+        objArea={x:rectangulos[i].x,y:rectangulos[i].y , area : rectangulos[i].x*rectangulos[i].y}
+        areas.push(objArea)
+    }
+    console.log(areas)
+
+    //order areas
+    rectOrden = areas.sort(function (a, b){
+        return (b.area  - a.area)
     })
     //
     for(i = 0 ; i<1;i++)
