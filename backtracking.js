@@ -11,9 +11,11 @@ var newPoints=[];
 var obj ={}
 function send()
 {
+    //order size
     rectOrden = rectangulos.sort(function (a, b){
         return (b.x  - a.x)
     })
+    //
     for(i = 0 ; i<1;i++)
     {
                  obj ={x : 0 ,
@@ -24,8 +26,9 @@ function send()
 
     }
     console.log(newPoints)
+    //create rectangle
     canvas = document.createElement('canvas');
-    
+    //properties
     canvas.id = "CursorLayer";
     canvas.width = padre[0].x;
     canvas.height = padre[0].y;
@@ -33,13 +36,13 @@ function send()
     canvas.style.position = "absolute";
     canvas.style.border = "1px solid";
 
-
+    //inside in div
     body = document.getElementById("area");
     body.appendChild(canvas);
-
     cursorLayer = document.getElementById("CursorLayer");
-    ctx = cursorLayer.getContext("2d");
 
+    //get DOM
+    ctx = cursorLayer.getContext("2d");
     ctx.fillStyle = "rgb(100,100,00)";
     
         for(a = 0;a<newPoints.length ; a++)
@@ -54,26 +57,4 @@ function x(data) {
     an= document.getElementById("ancho").value;
    console.log(la)
    console.log(an)
-
-    canvas = document.createElement('canvas');
-   
-        canvas.id = "CursorLayer";
-        canvas.width = la;
-        canvas.height = an;
-        canvas.style.zIndex = 8;
-        canvas.style.position = "absolute";
-        canvas.style.border = "1px solid";
-
-
-        var body = document.getElementById("area");
-        body.appendChild(canvas);
-
-        cursorLayer = document.getElementById("CursorLayer");
-
-        console.log(cursorLayer);
 }
-
-/*ctx.fillStyle = "rgb(100,100,00)";
-ctx.fillRect(0,0,100,50); // x , y, largo,ancho
-
-*/
