@@ -2,15 +2,17 @@
 var la,an;
 var canvas, body; 
 var ctx;
-var padre =[{x:800, y: 400}];
-//
-var rectangulos = [  {x:100,y:50},{x:80,y:40},{x:200,y:50},
-{x:150,y:50},{x:100,y:20},{x:50,y:30},{x:60,y:10},{x:70,y:20}];
+var padre =[{x:800, y: 200}];
+var area=160000;
+var rectangulos = [  {x:400,y:70},{x:100,y:70},{x:200,y:60},
+{x:150,y:70},{x:100,y:20},{x:50,y:30},{x:60,y:10},{x:70,y:20}];
 var areas=[];
 var objArea={};
 var rectOrden=[];
 var newPoints=[];
 var obj ={}
+var areaUsada=0;
+var anchoQueda=0;
 function send()
 {
     //get aareas
@@ -23,17 +25,26 @@ function send()
 
     //order areas
     rectOrden = areas.sort(function (a, b){
-        return (b.area  - a.area)
+        return (b.ancho  - a.ancho)
     })
+    console.log("order areas")
+    console.log(rectOrden)
     //
-    for(i = 0 ; i<1;i++)
+    for(i = 0 ; i<4;i++)
     {
-                 obj ={x : 0 ,
-                        y: 0,
-                        largo :rectOrden[0].x,
-                        ancho : rectOrden[0].y};
-                        newPoints.push(obj);
+        if(areaUsada<area && anchoQueda +rectOrden[i].x <=padre[0].x)
+        {
+            obj ={x : 0 +(anchoQueda) ,
+                y: 0 ,
+                area:rectOrden[i].area,
+                largo :rectOrden[i].x,
+                ancho : rectOrden[i].y};
 
+                newPoints.push(obj);
+                areaUsada=areaUsada+rectOrden[i].area;
+                anchoQueda=anchoQueda+rectOrden[i].x;
+                console.log(anchoQueda)
+        }           
     }
     console.log(newPoints)
     //create rectangle
@@ -53,12 +64,15 @@ function send()
 
     //get DOM
     ctx = cursorLayer.getContext("2d");
-    ctx.fillStyle = "rgb(100,100,00)";
-    
+    var color=10, color1=20;
         for(a = 0;a<newPoints.length ; a++)
-        {  
+        {   
+            string="rgb(100,"+color1+","+color+")";
+            ctx.fillStyle = "rgb(100,100,"+color+")";
+            console.log(string)
             ctx.fillRect(newPoints[a].x, newPoints[a].y ,newPoints[a].largo ,newPoints[a].ancho); // x , y, largo,ancho
-
+            color=color+50;
+            color1=color1+100;
         }
 }
 
