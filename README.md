@@ -51,3 +51,11 @@ El retroceso se usa con problemas que admitan el concepto de "solución candidat
 #### DIVIDE Y VENCERÁS
 
 El algoritmo divide y vencerás se basa prácticamente en resolver algún problema dificil, dividiéndolo en varias partes simples y hasta triviales, las cuales se juntarán luego para resolver el problema mayor. En las ciencias de la computación, el término divide y vencerás (DYV) hace referencia a uno de los más importantes paradigmas de diseño algorítmico. El método está basado en la resolución recursiva de un problema dividiéndolo en dos o más subproblemas de igual tipo o similar. El proceso continúa hasta que éstos llegan a ser lo suficientemente sencillos como para que se resuelvan directamente. Al final, las soluciones a cada uno de los subproblemas se combinan para dar una solución al problema original. Esta técnica es la base de los algoritmos eficientes para casi cualquier tipo de problema como, por ejemplo, algoritmos de ordenamiento (quicksort, mergesort, entre muchos otros), multiplicar números grandes (Karatsuba), análisis sintácticos (análisis sintáctico top-down) y la transformada discreta de Fourier. Por otra parte, analizar y diseñar algoritmos de DyV son tareas que lleva tiempo dominar. Hay ciertos casos en los cuales es necesario sustituir el problema original por uno más complejo para conseguir realizar la recursión, y no hay un método sistemático de generalización.
+
+### CONCLUSIONES
+
+**Fuerza Bruta**
+Podemos utilizar fuerza bruta cuando queremos añadir las piezas de forma brusca para cumplir su objetivo. En este caso se realizó
+un algoritmo que encuentre el primer espacio disponible para poder insertar las piezas de acuerdo a su área. Es sugerible que se use este algoritmo por su fácil implementación, pero no es recomendable cuando existen muchos datos de entrada, ya que su tiempo de ejecución es exponencial. 
+
+ 
