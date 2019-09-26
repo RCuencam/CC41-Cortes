@@ -1,10 +1,10 @@
 
 var la,an;
-var canvas, body; 
+var canvas, desDom, bodyDes,body; 
 var ctx;
 var padre =[{x:800, y: 200}];
 var area=160000;
-var rectangulos = [  {x:400,y:70},{x:100,y:70},{x:200,y:60},
+var rectangulos = [  {x:200,y:70},{x:100,y:70},{x:100,y:60},
 {x:150,y:70},{x:100,y:20},{x:50,y:30},{x:60,y:10},{x:70,y:20}];
 var areas=[];
 var objArea={};
@@ -17,6 +17,8 @@ var largoQueda=0;
 var max=[]
 var puntosUsados=[]
 var objPuntos={}
+var areaRectangulos=0
+var desperdicio=0;
 function send()
 {
     //get aareas
@@ -24,8 +26,21 @@ function send()
     {
         objArea={x:rectangulos[i].x,y:rectangulos[i].y , area : rectangulos[i].x*rectangulos[i].y}
         areas.push(objArea)
+        areaRectangulos=areaRectangulos+ objArea.area;
     }
-    console.log(areas)
+   
+    //Desperdicio 
+    desperdicio = (1-(areaRectangulos/(padre[0].x*padre[0].y)))*100;
+    desDom = document.createElement("input");
+    //properties
+    desDom.id = "layer";
+    desDom.value = "Desperdicio:" + desperdicio.toFixed(2) +"%, Area: "+ (((desperdicio)/100)*(padre[0].x*padre[0].y)) +" metros cuadrados";
+    desDom.style.width = "250%";
+    desDom.style.border = "none" ;
+    
+    bodyDes = document.getElementById("text");
+    bodyDes.appendChild(desDom);
+
 
     //order y
     rectOrden = areas.sort(function (a, b){
