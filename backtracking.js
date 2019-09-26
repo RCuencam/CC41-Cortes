@@ -81,11 +81,11 @@ function send()
                 areaUsada=areaUsada+rectOrden[i].area;
                 largoQueda=largoQueda+rectOrden[i].x;
                           
-        }else if(areaUsada<area ){
-            max = newPoints.sort(function (a, b){
+        }else if(areaUsada<area){
+           /* max = newPoints.sort(function (a, b){
                  return (b.ancho  - a.ancho)
-             })
-                 anchoUsado=0;
+             })*/
+                // anchoUsado=0;
                  obj ={x : max[0].ancho,
                  y: 0 +anchoUsado ,
                  area:rectOrden[i].area,
