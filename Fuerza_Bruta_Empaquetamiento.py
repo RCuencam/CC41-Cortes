@@ -1,31 +1,22 @@
-#Ingreso de datos
-G=[(4,5),(1,3),(3,4),(5,6)]
-Area_Plancha=200
+def MostrarAreas(A,H):
+    n=len(A)
+    resultado=[]
 
+    for i in range(n):
+        producto=A[i]*H[i]
+        resultado.append(producto)
+    return resultado
 
+def Ordenar(resultado):
+    resultado.sort(reverse=True)
+    return resultado
+    
 def AreaTotal(resultado):
     n=len(resultado)
     sumaa=0
     for i in range(n):
         sumaa+=resultado[i]
     return sumaa
-
-def Ordenar(resultado):
-	n=len(resultado) - 1
-	for i in range(n):
-		for j in range(n-i):
-			if resultado[j]<resultado[j+1]:
-				resultado[j],resultado[j+1]=resultado[j+1],resultado[j]
-	return resultado
-
-def Mostrar_Areas_de_Cortes(G):
-	n=len(G)
-	resultado=[]
-
-	for i in range(n):
-		producto=G[i][0]*G[i][1]
-		resultado.append((producto,G[i][0],G[i][1]))
-	return resultado
 
 class Bin:
 	def __init__(self):
@@ -34,10 +25,10 @@ class Bin:
 	def añadirPieza(self, corte):
 		self.list.append(corte)
 
-	def Remover_Corte(self, corte):
+	def removecorte(self, corte):
 		self.list.remove(corte)
 
-	def Suma(self):
+	def suma(self):
 		total = 0
 		for elem in self.list:
 			total += elem
@@ -47,40 +38,45 @@ class Bin:
 		return self.list
 
 def Contenedores(arreglo, areaTotal):
-	Arreglo_de_Planchas = [] 
-	Arreglo_de_Planchas.append(Bin()) 
+	#retorna una lista de placas con corte de entrada dentro
+	arregloPlancha = []
+	arregloPlancha.append(Bin()) #Agregue el primer contenedor vacío a la lista
 
 	for corte in arreglo:
+		# Ir a través de contenedores e intentar asignar
 		Añadir = False
 
-		for bin in Arreglo_de_Planchas:
-			if bin.Suma() + corte <= areaTotal:
+		for bin in arregloPlancha:
+			if bin.suma() + corte <= areaTotal:
 				bin.añadirPieza(corte)
 				Añadir = True
 				break
 		
-		
+		# Si el artículo no esta asignado en los contenedores de la lista, cree un nuevo contenedor
+		# y asignarselo
 		if Añadir == False:
 			nuevaPlancha = Bin()
 			nuevaPlancha.añadirPieza(corte)
-			Arreglo_de_Planchas.append(nuevaPlancha)
+			arregloPlancha.append(nuevaPlancha)
 
+	# Convierta los contenedores en una lista de artículos y devuélvalos
 	arreglo = []
-	for bin in Arreglo_de_Planchas:
+	for bin in arregloPlancha:
 		arreglo.append(bin.Mostrar())
 
 	return(arreglo)
 
 def Desperdicio():
-    resultado=100-((AreaTotal(Mostrar_Areas_de_Cortes(A,H))/Area_Plancha)*100)
+    resultado=100-((AreaTotal(MostrarAreas(A,H))/planchaArea)*100)
     return resultado
 
-print(Mostrar_Areas_de_Cortes(G))
-print(Ordenar(Mostrar_Areas_de_Cortes(G)))
-resultado=Contenedores(Ordenar(Mostrar_Areas_de_Cortes(G)),Area_Plancha)
-print(resultado)
+A=[4,5,6,7]
+H=[1,2,3,4]
+planchaArea=200
 
+resultado=Contenedores(Ordenar(MostrarAreas(A,H)),planchaArea)
+print(resultado)
 nroCortes=len(resultado)
 print("Los numeros de cortes son: ",nroCortes)
-print("La cantidad de area utilizada es:",AreaTotal(Mostrar_Areas_de_Cortes(G)),"m^2")
-print("Porcentaje de Area no utilizada: ", Desperdicio(),"%")
+print(AreaTotal(MostrarAreas(A,H)))
+print(Desperdicio(),"%")
