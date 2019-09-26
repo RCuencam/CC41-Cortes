@@ -13,6 +13,10 @@ var newPoints=[];
 var obj ={}
 var areaUsada=0;
 var anchoQueda=0;
+var largoQueda=0;
+var max=[]
+var puntosUsados=[]
+var objPuntos={}
 function send()
 {
     //get aareas
@@ -23,28 +27,48 @@ function send()
     }
     console.log(areas)
 
-    //order areas
+    //order y
     rectOrden = areas.sort(function (a, b){
-        return (b.ancho  - a.ancho)
+        return (b.y  - a.y)
     })
     console.log("order areas")
     console.log(rectOrden)
     //
-    for(i = 0 ; i<4;i++)
+    for(i = 0 ; i<3;i++)
     {
         if(areaUsada<area && anchoQueda +rectOrden[i].x <=padre[0].x)
         {
-            obj ={x : 0 +(anchoQueda) ,
+                obj ={x : 0 +(anchoQueda) ,
                 y: 0 ,
                 area:rectOrden[i].area,
                 largo :rectOrden[i].x,
                 ancho : rectOrden[i].y};
 
                 newPoints.push(obj);
+                objPuntos={ x:rectOrden[i].x,
+                        y:rectOrden[i].y,
+                        }
+                puntosUsados.push(objPuntos)        
                 areaUsada=areaUsada+rectOrden[i].area;
                 anchoQueda=anchoQueda+rectOrden[i].x;
-                console.log(anchoQueda)
-        }           
+                
+        }/*else if(areaUsada<area && largoQueda +rectOrden[i].x <=padre[0].x){
+            max = newPoints.sort(function (a, b){
+                return (b.ancho  - a.ancho)
+            })
+                anchoQueda=0;
+                obj ={x : max[0].ancho,
+                y: 0 +anchoQueda ,
+                area:rectOrden[i].area,
+                largo :rectOrden[i].x,
+                ancho : rectOrden[i].y};
+
+                newPoints.push(obj);
+                areaUsada=areaUsada+rectOrden[i].area;
+                anchoQueda = anchoQueda+rectOrden[i].y;
+                largoQueda=largoQueda+rectOrden[i].x;
+
+        }       */ 
     }
     console.log(newPoints)
     //create rectangle
