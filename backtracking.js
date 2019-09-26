@@ -2,23 +2,24 @@
 var la,an;
 var canvas, desDom, bodyDes,body; 
 var ctx;
-var padre =[{x:800, y: 200}];
-var area=160000;
-var rectangulos = [  {x:200,y:70},{x:100,y:70},{x:100,y:60},
-{x:150,y:70},{x:100,y:20},{x:50,y:30},{x:60,y:10},{x:70,y:20}];
+var padre =[{x:800, y: 190}];
+var area=152000;
+var rectangulos = [  {x:400,y:70},{x:200,y:70},{x:150,y:60},
+{x:200,y:50},{x:100,y:20},{x:130,y:30},{x:120,y:10},{x:140,y:20}];
 var areas=[];
 var objArea={};
 var rectOrden=[];
 var newPoints=[];
 var obj ={}
 var areaUsada=0;
-var anchoQueda=0;
+var anchoUsado=0;
 var largoQueda=0;
 var max=[]
 var puntosUsados=[]
 var objPuntos={}
 var areaRectangulos=0
 var desperdicio=0;
+var cont=0;
 function send()
 {
     //get aareas
@@ -46,46 +47,61 @@ function send()
     rectOrden = areas.sort(function (a, b){
         return (b.y  - a.y)
     })
-    console.log("order areas")
+    console.log("order y")
     console.log(rectOrden)
     //
-    for(i = 0 ; i<3;i++)
+    for(i = 0 ; i<5;i++)
     {
-        if(areaUsada<area && anchoQueda +rectOrden[i].x <=padre[0].x)
+        if(areaUsada<area && largoQueda +rectOrden[i].x <=padre[0].x)
         {
-                obj ={x : 0 +(anchoQueda) ,
+                obj ={x : 0 +(largoQueda) ,
                 y: 0 ,
                 area:rectOrden[i].area,
                 largo :rectOrden[i].x,
                 ancho : rectOrden[i].y};
 
                 newPoints.push(obj);
-                objPuntos={ x:rectOrden[i].x,
-                        y:rectOrden[i].y,
-                        }
-                puntosUsados.push(objPuntos)        
+                 if(i==0){ objPuntos={
+                             xi:0,
+                             yi:0,
+                             xf:rectOrden[i].x ,
+                             yf:rectOrden[i].y
+                           
+                             }
+                            }else{
+                                objPuntos={ xi:puntosUsados[i-1].xf ,
+                                yi:puntosUsados[i-1].yi,
+                               xf:rectOrden[i].x +puntosUsados[i-1].xf  ,
+                               yf:rectOrden[i].y +puntosUsados[i-1].yi}
+                               cont=cont+puntosUsados[i-1].xf;
+                            }
+                        
+                puntosUsados.push(objPuntos)      
+                  
                 areaUsada=areaUsada+rectOrden[i].area;
-                anchoQueda=anchoQueda+rectOrden[i].x;
-                
-        }/*else if(areaUsada<area && largoQueda +rectOrden[i].x <=padre[0].x){
-            max = newPoints.sort(function (a, b){
-                return (b.ancho  - a.ancho)
-            })
-                anchoQueda=0;
-                obj ={x : max[0].ancho,
-                y: 0 +anchoQueda ,
-                area:rectOrden[i].area,
-                largo :rectOrden[i].x,
-                ancho : rectOrden[i].y};
-
-                newPoints.push(obj);
-                areaUsada=areaUsada+rectOrden[i].area;
-                anchoQueda = anchoQueda+rectOrden[i].y;
                 largoQueda=largoQueda+rectOrden[i].x;
-
-        }       */ 
+                          
+        }else if(areaUsada<area ){
+            max = newPoints.sort(function (a, b){
+                 return (b.ancho  - a.ancho)
+             })
+                 anchoUsado=0;
+                 obj ={x : max[0].ancho,
+                 y: 0 +anchoUsado ,
+                 area:rectOrden[i].area,
+                 largo :rectOrden[i].x,
+                 ancho : rectOrden[i].y};
+ 
+                 newPoints.push(obj);
+                 areaUsada=areaUsada+rectOrden[i].area;
+                 anchoUsado = anchoUsado+rectOrden[i].y;
+                 largoQueda=largoQueda+rectOrden[i].x;
+ 
+         }       
     }
     console.log(newPoints)
+    console.log(puntosUsados)
+
     //create rectangle
     canvas = document.createElement('canvas');
     //properties
